@@ -46,9 +46,9 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
-    {
-        //
+    
+    public function show()
+    {  
     }
 
     /**
@@ -83,5 +83,36 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+    }
+
+    public function searching(Request $request)
+    {
+        $search = $request->search;
+        $category = null;
+        $flag=0;
+        if($search != null)
+        {
+            if(filter_var($search, FILTER_VALIDATE_INT)) 
+            {
+                $category = Category::all()->where('id',$search);
+                $flag++;
+            }
+            else
+            {
+                $category = Category::all()->where('catName',$search);
+                // $data = json_decode($jdata);
+                if($category != null)
+                $flag++;
+            }
+        }
+        // if($flag == 0)
+        // {
+        //     $category = Category::all();
+        // }
+        $category = json_decode(json_encode($category),true);
+        // echo "<pre>";
+        // var_dump($category);
+        // echo "</pre>";
+        return view('SearchCategory',['categories'=>$category]);  
     }
 }

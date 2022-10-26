@@ -15,7 +15,12 @@ class ClientController extends Controller
     public function index()
     {
         $clients = Client::all();
+        // $clients = Client::find(1);
+        // $clients-> Categories;
         $clients = json_decode(json_encode($clients),true);
+        // echo "<pre>";
+        // var_dump($clients);
+        // echo "</pre>";
         return view('Clients',['clients'=>$clients]);
     }
 

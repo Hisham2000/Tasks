@@ -17,16 +17,20 @@
                         <th scope="col">Name</th>
                         <th scope="col">Address</th>
                         <th scope="col">Email</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($clients as $client)
-                        <tr>
-                            <th scope="row">{{$client['id']}}</th>
-                            <td>{{$client['clientName']}}</td>
-                            <td>{{$client['clientAddress']}}</td>
-                            <td>{{$client['clientEmail']}}</td>
-                        </tr>
+                            
+                            <tr>
+                                <th scope="row">{{$client['id']}}</th>
+                                <td>{{$client['clientName']}}</td>
+                                <td>{{$client['clientAddress']}}</td>
+                                <td>{{$client['clientEmail']}}</td>
+                                <td><a href="{{URL::to('invoice/' .$client['id']) }}" class="btn btn-primary" >Show</a></td>
+                            </tr>
+                        
                     @endforeach
                 </tbody>
             </table>

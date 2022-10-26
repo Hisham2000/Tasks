@@ -43,25 +43,6 @@
         }
     </style>
 </head>
-    <form  method="GET" action="{{route('search')}}">
-        @csrf
-        @method('get')
-    <div class="container">
-
-        <div class="row height d-flex justify-content-center align-items-center">
-
-            <div class="col-md-8">
-
-                <div class="search">
-                    <i class="fa fa-search"></i>
-                    <input type="text" name="search" class="form-control" placeholder="Enter The Category ID or Name">
-                    <input type="submit" class="btn btn-primary button">
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-
     <div class="container text-center"  style="margin-top: 20px;">
         <div class="table-responsive">
             <table class="table table-bordered table-sm table-striped">

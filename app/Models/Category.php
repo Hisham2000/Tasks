@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+    
+    public function clients(){
+        return $this->belongsToMany('App\Models\Client','App\Models\Inovice');
+    }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\InvoiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('category/search', [CategoryController::class,'searching'])->name('search');
+Route::resource('category',CategoryController::class,['only'=>['index']]);
+Route::resource('client',ClientController::class,['only'=>['index']]);
+Route::resource('invoice',InvoiceController::class,['only'=>['show']]);
 
-Route::resource('category',CategoryController::class);
-Route::resource('client',ClientController::class);
+// Route::get('category',[CategoryController::class,'index']);
+// Route::get('client',[ClientController::class,'index']);
+// Route::get('invoice/{id}',[InvoiceController::class,'show']);
+
